@@ -1,0 +1,59 @@
+name: Onboard Users to Copilot
+on:
+  workflow_dispatch:
+    inputs:
+      email:
+        description: 'Email address of user to onboard'
+        required: true
+
+jobs:
+  onboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Validate email domain
+        run: |
+          if [[ "${{ github.event.inputs.email }}" != *@microsoft.com ]]; then
+            # Check if the email domain is microsoft.com
+            echo "Invalid email domain. Only microsoft.com emails are allowed."
+            exit 1
+          else
+            echo "Email domain validated successfully."
+          fi
+      - name: Add user to Copilot
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -d '{"email": "${{ github.event.inputs.email }}"}' \
+          https://api.github.com/orgs/your-org/copilot/subscription
+          if [ $? -eq 0 ]; then
+            echo "User onboarded successfully."
+          else
+            echo "Failed to onboard user."
+            exit 1
+          fi
+      - name: Notify user
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -d '{"email": "${{ github.event.inputs.email }}", "message": "You have been onboarded to Copilot!"}' \
+          https://api.github.com/notifications
+          if [ $? -eq 0 ]; then
+            echo "User notified successfully."
+          else
+            echo "Failed to notify user."
+            exit 1
+          fi
+      - name: Cleanup
+        run: |
+          # Perform any necessary cleanup actions here
+          echo "Cleanup completed."
+          if [ $? -eq 0 ]; then
+            echo "Cleanup successful."
+          else
+            echo "Cleanup failed."
+            exit 1
+          fi
+      - name: Complete workflow
+        run: |
+          echo "Workflow completed successfully."
+          exit 0
