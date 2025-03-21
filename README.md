@@ -43,7 +43,7 @@ It performs the following steps:
 - A GitHub token (`GITHUB_TOKEN`) with permissions to manage Copilot subscriptions and send notifications.
 - Users must have a valid `@contoso.com` email address.
 
-## GitHub Copilot Self-Service Onboarding
+## 🤖 GitHub Copilot Self-Service Onboarding
 
 ### Environment Variables
 
