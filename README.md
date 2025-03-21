@@ -42,3 +42,15 @@ It performs the following steps:
 - GitHub Actions enabled in your repository.
 - A GitHub token (`GITHUB_TOKEN`) with permissions to manage Copilot subscriptions and send notifications.
 - Users must have a valid `@contoso.com` email address.
+
+## GitHub Copilot Self-Service Onboarding
+
+### Environment Variables
+
+The workflow uses the following environment variables:
+
+- `EMAIL_DOMAIN`: The allowed email domain for onboarding users (e.g., `contoso.com`).
+- `GITHUB_ORG`: The GitHub organization name used for onboarding users to Copilot (e.g., `contoso`).
+- `GITHUB_TOKEN`: GitHub token with permissions to manage Copilot subscriptions and send notifications. Stored securely in repository secrets as `GITHUB_TOKEN`.
+
+ℹ️ Update these variables in the workflow file `.github/workflows/gh-copilot-onboarding.yaml` as needed.
