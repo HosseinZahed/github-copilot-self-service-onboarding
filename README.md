@@ -18,11 +18,11 @@ It performs the following steps:
 - If the email domain is invalid, the workflow exits with an error message.
 
 ### 3. ➕ Add User to Copilot
-- Sends a POST request to GitHub's API to add the user to your organization's Copilot subscription.
+- Sends a PUT request to GitHub's API endpoint `orgs/{org}/copilot/billing/selected_users` to add the user to your organization's Copilot subscription.
 - Requires a valid GitHub token (`GITHUB_TOKEN`) with appropriate permissions stored in repository secrets.
 
 ### 4. 📧 Notify User
-- Sends a notification to the user informing them that they have been successfully onboarded to GitHub Copilot.
+- Sends a repository dispatch event to notify the user that they have been successfully onboarded to GitHub Copilot.
 
 ### 5. 🧹 Cleanup
 - Performs any necessary cleanup actions after onboarding.
