@@ -14,9 +14,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Validate email domain
         run: |
-          if [[ "${{ github.event.inputs.email }}" != *@microsoft.com ]]; then
-            # Check if the email domain is microsoft.com
-            echo "Invalid email domain. Only microsoft.com emails are allowed."
+          if [[ "${{ github.event.inputs.email }}" != *@contoso.com ]]; then
+            # Check if the email domain is contoso.com
+            echo "Invalid email domain. Only contoso.com emails are allowed."
             exit 1
           else
             echo "Email domain validated successfully."

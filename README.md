@@ -4,13 +4,17 @@ This repository contains a GitHub Actions workflow designed to automate the onbo
 
 ## Workflow Overview
 
-The workflow is triggered manually and requires an email address as input. It performs the following steps:
+The workflow is triggered manually and requires an email address as input. 
+
+⚠️ In the workflow, replace `contoso.com` with your organization's domain name.
+
+It performs the following steps:
 
 ### 1. 📥 Checkout Repository
 - Checks out the current repository to access workflow scripts and resources.
 
 ### 2. ✅ Validate Email Domain
-- Ensures the provided email address belongs to the `microsoft.com` domain. (Replace it with your organization's domain name.)
+- Ensures the provided email address belongs to the `contoso.com` domain.
 - If the email domain is invalid, the workflow exits with an error message.
 
 ### 3. ➕ Add User to Copilot
@@ -30,11 +34,11 @@ The workflow is triggered manually and requires an email address as input. It pe
 
 1. Navigate to the **Actions** tab in your GitHub repository.
 2. Select the **Onboard Users to Copilot** workflow.
-3. Click **Run workflow** and enter the user's email address (`@microsoft.com` domain required).
+3. Click **Run workflow** and enter the user's email address (`@contoso.com` domain required).
 4. Click **Run workflow** to start the onboarding process.
 
 ## 📋 Requirements
 
 - GitHub Actions enabled in your repository.
 - A GitHub token (`GITHUB_TOKEN`) with permissions to manage Copilot subscriptions and send notifications.
-- Users must have a valid `@microsoft.com` email address.
+- Users must have a valid `@contoso.com` email address.
